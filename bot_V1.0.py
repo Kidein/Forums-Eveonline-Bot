@@ -1,3 +1,4 @@
+import asyncio
 import time
 
 import discord
@@ -41,18 +42,17 @@ def compare_on_time(forum_url):
         schedule.run_pending()
 
 
-data = compare("https://forums.eveonline.com/c/marketplace/sales-ads/")
+# data = compare_on_time("https://forums.eveonline.com/c/marketplace/sales-ads/")
 
 
 @client.event
 async def on_message(message):
     if message.content.startswith("!start"):
-        for line in data:
-            await message.channel.send(line)
-    elif message.content.startswith("hello"):
-        await message.channel.send("hi,i am a bot")
-    else:
-        return
+        while True:
+            data = compare("https://forums.eveonline.com/c/marketplace/sales-ads/")
+            for line in data:
+                await message.channel.send(line)
+            data.clear()
 
 
 client.run("OTM5OTczOTMwNjA3ODQxMzMw.YgAo8A.dGT5T5oG68DTKUcEPhY4Gb6q9Fs")
