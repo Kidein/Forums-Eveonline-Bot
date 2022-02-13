@@ -1,9 +1,7 @@
-import asyncio
 import time
 
 import discord
 import requests
-import schedule
 from bs4 import BeautifulSoup
 
 client = discord.Client()
@@ -29,20 +27,9 @@ def compare(forum_url):
 
     if list1[2] != list2[2]:
         final1 = list2[2:4].copy()
-        # print(list2[2], "\n ")
-        # print(list2[3], "\n ")
         return final1
     state1_list.clear()
     state2_list.clear()
-
-
-def compare_on_time(forum_url):
-    schedule.every(1).seconds.do(compare, forum_url)
-    while True:
-        schedule.run_pending()
-
-
-# data = compare_on_time("https://forums.eveonline.com/c/marketplace/sales-ads/")
 
 
 @client.event
