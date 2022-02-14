@@ -13,8 +13,6 @@ def get_info(forum_url, list_name):
     tags = soup.find_all("a", class_="title raw-link raw-topic-link")
     for tag in tags:
         item_url = tag.get("href")
-        item_text = tag.text
-        list_name.append(item_text)
         list_name.append(item_url)
     return list_name
 
@@ -22,11 +20,11 @@ def get_info(forum_url, list_name):
 def compare(forum_url):
     state1_list, state2_list, final_list = [], [], []
     list1 = get_info(forum_url, state1_list)
-    time.sleep(120)
+    time.sleep(60)
     list2 = get_info(forum_url, state2_list)
 
-    if list1[2] != list2[2]:
-        final1 = list2[2:4].copy()
+    if list1[1] != list2[1]:
+        final1 = list2[1:2].copy()
         return final1
     state1_list.clear()
     state2_list.clear()
