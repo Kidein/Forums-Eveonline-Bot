@@ -40,4 +40,4 @@ async def on_message(message):
             data.clear()
 
 
-client.run("OTM5OTczOTMwNjA3ODQxMzMw.YgAo8A.dGT5T5oG68DTKUcEPhY4Gb6q9Fs")
+client.run("")
