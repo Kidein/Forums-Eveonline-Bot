@@ -19,13 +19,6 @@ def get_info(forum_url, list_name):
     return list_name
 
 
-def print_last_topic(forum_url, list_name):
-    get_info(forum_url, list_name)
-    print(list_name[2], "\n ")
-    print(list_name[3], "\n ")
-    list_name.clear()
-
-
 def compare(forum_url):
     state1_list, state2_list = [], []
     list1 = get_info(forum_url, state1_list)
