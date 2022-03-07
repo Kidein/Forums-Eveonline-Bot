@@ -27,33 +27,19 @@ def print_last_topic(forum_url, list_name):
 
 
 def compare(forum_url):
-    state1_list, state2_list, final_list = [], [], []
+    state1_list, state2_list = [], []
     list1 = get_info(forum_url, state1_list)
-    time.sleep(120)
+    time.sleep(60)
     list2 = get_info(forum_url, state2_list)
 
-    if list1[2] != list2[2]:
-        final1 = list2[2:4].copy()
-        # print(list2[2], "\n ")
-        # print(list2[3], "\n ")
+    if list1[1] != list2[1]:
+        final1 = list2[1:2].copy()
         return final1
     else:
-        print("no new posts \n")
-
-    state1_list.clear()
-    state2_list.clear()
+        return []
 
 
 def compare_on_time(forum_url):
     schedule.every(1).seconds.do(compare, forum_url)
     while True:
         schedule.run_pending()
-
-if message.content.startswith('!start'):
-    whilte True:
-    data = compare("https://forums.eveonline.com/c/marketplace/sales-ads/")
-    for line in data:
-        await message.channel.send(line)
-print(data)
-
-
