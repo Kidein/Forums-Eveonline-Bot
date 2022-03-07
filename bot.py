@@ -26,8 +26,8 @@ def compare(forum_url):
     if list1[1] != list2[1]:
         final1 = list2[1:2].copy()
         return final1
-    state1_list.clear()
-    state2_list.clear()
+    else:
+        return []
 
 
 @client.event
@@ -40,4 +40,4 @@ async def on_message(message):
             data.clear()
 
 
-client.run("")
+client.run()
