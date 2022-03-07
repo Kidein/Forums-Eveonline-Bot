@@ -4,8 +4,6 @@ import requests
 import schedule
 from bs4 import BeautifulSoup
 
-last_topic_list = []
-
 
 def get_info(forum_url, list_name):
     r = requests.get(forum_url)
@@ -13,8 +11,6 @@ def get_info(forum_url, list_name):
     tags = soup.find_all("a", class_="title raw-link raw-topic-link")
     for tag in tags:
         item_url = tag.get("href")
-        item_text = tag.text
-        list_name.append(item_text)
         list_name.append(item_url)
     return list_name
 
@@ -30,9 +26,3 @@ def compare(forum_url):
         return final1
     else:
         return []
-
-
-def compare_on_time(forum_url):
-    schedule.every(1).seconds.do(compare, forum_url)
-    while True:
-        schedule.run_pending()
