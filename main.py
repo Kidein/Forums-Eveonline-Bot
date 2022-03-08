@@ -21,6 +21,7 @@ def get_replies(forum_url, replies_list):
     replies = soup.find_all("span", class_="posts")
     for reply in replies:
         replies_list.append(reply.contents)
+    return replies_list
 
 
 def compare(forum_url):
