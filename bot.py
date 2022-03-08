@@ -5,6 +5,13 @@ from bot_token import BOT_TOKEN
 
 client = discord.Client()
 
+"""
+we use discord library to send messages
+on_message()
+
+if user message starts with !Sales_ads_all_updates it will start working
+"""
+
 
 @client.event
 async def on_message(message):

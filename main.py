@@ -3,6 +3,10 @@ import time
 import requests
 from bs4 import BeautifulSoup
 
+"""
+with function get_link() we scrape all urls from a forum
+"""
+
 
 def get_link(forum_url, links_list):
     raw_url = requests.get(forum_url)
@@ -14,6 +18,12 @@ def get_link(forum_url, links_list):
     return links_list
 
 
+"""
+with function get_replies() we scrape number of replies in every topic,
+so we will know if topic is new or not
+"""
+
+
 def get_replies(forum_url, replies_list):
     raw_url1 = requests.get(forum_url)
     soup = BeautifulSoup(raw_url1.text, "lxml")
@@ -21,6 +31,12 @@ def get_replies(forum_url, replies_list):
     for reply in replies:
         replies_list.append(reply.contents)
     return replies_list
+
+
+"""
+with function compare() we compare two lists with links, if these lists are not the same (someone updated a forum topic, so it moved to the top),
+we print out the new element from second list
+"""
 
 
 def compare(forum_url):
@@ -33,6 +49,13 @@ def compare(forum_url):
         return state2_list[1:2]
     else:
         return []
+
+
+"""
+with function compare_for_new_topics() we compare two lists with links as we did before, but we add another list with amount of replies,
+if the first element equals = 0 in that list, it means that this topic is new
+so it will print a new topic
+"""
 
 
 def compare_for_new_topics(forum_url):
