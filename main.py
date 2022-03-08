@@ -5,8 +5,8 @@ from bs4 import BeautifulSoup
 
 
 def get_link(forum_url, links_list):
-    r = requests.get(forum_url)
-    soup = BeautifulSoup(r.text, "lxml")
+    raw_url = requests.get(forum_url)
+    soup = BeautifulSoup(raw_url.text, "lxml")
     tags = soup.find_all("a", class_="title raw-link raw-topic-link")
     for tag in tags:
         url = tag.get("href")
@@ -15,8 +15,8 @@ def get_link(forum_url, links_list):
 
 
 def get_replies(forum_url, replies_list):
-    r = requests.get(forum_url)
-    soup = BeautifulSoup(r.text, "lxml")
+    raw_url1 = requests.get(forum_url)
+    soup = BeautifulSoup(raw_url1.text, "lxml")
     replies = soup.find_all("span", class_="posts")
     for reply in replies:
         replies_list.append(reply.contents)
@@ -40,9 +40,9 @@ def compare_for_new_topics(forum_url):
     first_state_list = get_link(forum_url, links_list01)
     time.sleep(60)
     second_state_list = get_link(forum_url, links_list02)
-    replies_list = get_replies(forum_url, replies_list1)
-    x = replies_list[1]
-    if x[0] == "0":
+    result_list = get_replies(forum_url, replies_list1)
+    first_element_list = result_list[1]
+    if first_element_list[0] == "0":
         if first_state_list[1] != second_state_list[1]:
             return second_state_list[1:2]
         else:
