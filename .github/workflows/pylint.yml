@@ -2,6 +2,8 @@ name: Pylint
 
 on: [push]
 
+disable = R1705, C0411
+
 jobs:
   build:
     runs-on: ubuntu-latest
