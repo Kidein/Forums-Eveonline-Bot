@@ -1,11 +1,10 @@
+"""
+file with functions
+"""
 import time
 
 import requests
 from bs4 import BeautifulSoup
-
-"""
-with function get_link() we scrape all urls from a forum
-"""
 
 
 def get_link(forum_url, links_list):
@@ -40,7 +39,7 @@ async def compare(forum_url):
     we print out the new element from second list
     """
     links_list1, links_list2 = [], []
-    state1_list = get_link(forum_url, links_list1)
+    state1_list = get_link(forum_url, links_list1)  # pylint: disable=C0301
     await time.sleep(60)
     state2_list = get_link(forum_url, links_list2)
 
@@ -55,7 +54,7 @@ async def compare_for_new_topics(forum_url):
     if the first element equals = 0 in that list, it means that this topic is new
     so it will print a new topic
     """
-    replies_list1, links_list01, links_list02 = [], [], []
+    replies_list1, links_list01, links_list02 = [], [], []  # pylint: disable=C0301
     first_state_list = get_link(forum_url, links_list01)
     await time.sleep(60)
     second_state_list = get_link(forum_url, links_list02)
