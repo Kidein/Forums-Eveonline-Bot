@@ -1,7 +1,7 @@
 import discord
 
 import main
-from bot_token import BOT_TOKEN  # noqa
+from bot_token import BOT_TOKEN  # pylint: disable=C0411
 
 client = discord.Client()
 
