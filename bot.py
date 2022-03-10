@@ -1,7 +1,7 @@
 import discord
 
 import main
-from bot_token import BOT_TOKEN
+from bot_token import BOT_TOKEN  # noqa
 
 client = discord.Client()
 
