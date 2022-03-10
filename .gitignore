@@ -152,5 +152,5 @@ cython_debug/
 #.idea/
 
 #Custom
-.bot_token.py
+bot_token.py
 
