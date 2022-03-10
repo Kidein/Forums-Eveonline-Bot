@@ -41,7 +41,7 @@ async def compare(forum_url):
     """
     links_list1, links_list2 = [], []
     state1_list = get_link(forum_url, links_list1)
-    await time.sleep(60)
+    time.sleep(60)
     state2_list = get_link(forum_url, links_list2)
 
     if state1_list[1] == state2_list[1]:
