@@ -33,7 +33,7 @@ def get_replies(forum_url, replies_list):
     return replies_list
 
 
-async def compare(forum_url):
+def compare(forum_url):
     """
     with function compare() we compare two lists with links,
     if these lists are not the same (someone updated a forum topic, so it moved to the top),
@@ -41,7 +41,7 @@ async def compare(forum_url):
     """
     links_list1, links_list2 = [], []
     state1_list = get_link(forum_url, links_list1)
-    await time.sleep(60)
+    time.sleep(60)
     state2_list = get_link(forum_url, links_list2)
 
     if state1_list[1] == state2_list[1]:
@@ -49,7 +49,7 @@ async def compare(forum_url):
     return state2_list[1:2]
 
 
-async def compare_for_new_topics(forum_url):
+def compare_for_new_topics(forum_url):
     """
     with function compare_for_new_topics() we compare two lists with links as we did before,
     but we add another list with amount of replies,
@@ -58,7 +58,7 @@ async def compare_for_new_topics(forum_url):
     """
     replies_list1, links_list01, links_list02 = [], [], []  # pylint: disable=C0301
     first_state_list = get_link(forum_url, links_list01)
-    await time.sleep(60)
+    time.sleep(60)
     second_state_list = get_link(forum_url, links_list02)
     result_list = get_replies(forum_url, replies_list1)
     first_element_list = result_list[1]
