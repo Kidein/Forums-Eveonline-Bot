@@ -119,6 +119,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+discord-bot
 
 # Spyder project settings
 .spyderproject
