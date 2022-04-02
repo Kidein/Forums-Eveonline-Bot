@@ -1,16 +1,14 @@
 """
 file with functions
 """
+import time
 
 import requests
 from bs4 import BeautifulSoup
 
 
 class Meow:
-    #     def __init__(self) -> None:
-    #         self.links_list = []
-
-    def get_link(self, forum_url):
+    def get_link(self, forum_url, links_list):
         """
         with function get_link() we scrape all urls from a forum
         """
@@ -21,9 +19,24 @@ class Meow:
         for tag in tags:
             url = tag.get("href")
             links_list.append(url)
-        # return links_list
-        print(links_list)
+        return links_list
+
+    def compare(self, forum_url):
+        """
+        with function compare() we compare two lists with links,
+        if these lists are not the same (someone updated a forum topic, so it moved to the top),
+        we print out the new element from second list
+        """
+        links_list1, links_list2 = [], []
+        state1_list = self.get_link(forum_url, links_list1)
+        time.sleep(10)
+        state2_list = self.get_link(forum_url, links_list2)
+
+        if state1_list[1] == state2_list[1]:
+            print("no changes")
+            return []
+        return state2_list[1:2]
 
 
 a = Meow()
-a.get_link("https://forums.eveonline.com/c/marketplace/sales-ads/55")
+a.compare("https://forums.eveonline.com/c/marketplace/sales-ads/55")
