@@ -9,7 +9,7 @@ import requests
 from bs4 import BeautifulSoup
 
 
-class Meow:
+class ForumTracker:
     def get_link(self, forum_url, links_list):
         """
         with function get_link() we scrape all urls from a forum
@@ -40,5 +40,5 @@ class Meow:
         return state2_list[1:2]
 
 
-a = Meow()
-asyncio.run(a.compare("https://forums.eveonline.com/c/marketplace/sales-ads/55"))
+Bot = ForumTracker()
+asyncio.run(Bot.compare("https://forums.eveonline.com/c/marketplace/sales-ads/55"))
